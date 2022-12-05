@@ -32,6 +32,9 @@ const Buttoncel = ({title,img,url}) => {
                 <p>{item.Name}</p>
             </div>
         ))}
+        {(datas&&datas.data.data.CelebrityFaces.length===0) && (
+            <p>Không phải người nổi tiếng</p>
+        )}
     </React.Fragment>
   )
 }

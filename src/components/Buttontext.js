@@ -27,11 +27,32 @@ const Buttontext = ({title,img,url}) => {
     <React.Fragment>
         <div className='button' onClick={detectLabels}>{title}</div>
         {isLoading ? <p>Loading...</p> : <Text title={title}/>}
-        {datas&&datas.data.data.TextDetections.map((item,index)=>(
-            <div key={index}>
-                <p>{item.DetectedText}</p>
-            </div>
-        ))}
+        {datas&&(
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Detection Text</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Confidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        datas.data.data.TextDetections.map((item,index)=>(
+                            <tr key={index}>
+                                <th scope="row">{item.Id}</th>
+                                <td>{item.DetectedText}</td>
+                                <td>{item.Type}</td>
+                                <td>{item.Confidence}</td>
+                            </tr>
+                        ))
+                    }
+                    
+                </tbody>
+          </table>
+        )}
+       
     </React.Fragment>
   )
 }

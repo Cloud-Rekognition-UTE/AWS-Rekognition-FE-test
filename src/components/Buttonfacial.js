@@ -30,10 +30,24 @@ const Buttonfacial = ({title,url,img}) => {
         {datas&&datas.data.data.FaceDetails.map((item,index)=>(
             <div key={index}>
                 <p>AgeRange: {item.AgeRange.Low} - {item.AgeRange.High}</p>
-                <p>Emotion: {item.Emotions.map((emotion,indexEmo)=>(
-                    <span key={indexEmo}>{emotion.Type} </span>
-                ))}
-                </p>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Confidece</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {item.Emotions.map((emotion,indexEmo)=>(
+                            <tr key={indexEmo}>
+                                <th scope="row">{indexEmo+1}</th>
+                                <td>{emotion.Type}</td>
+                                <td>{emotion.Confidence}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
                 <p>Gender: {item.Gender.Value}</p>
             </div>
         ))}

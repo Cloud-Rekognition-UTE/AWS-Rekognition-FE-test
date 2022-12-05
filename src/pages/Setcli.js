@@ -1,10 +1,14 @@
 import React,{useState} from 'react'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
+
 const Setcli = () => {
+    const navigate = useNavigate()
     const [accessKeyId, setAccessKeyId] = useState('')
     const [secretAccessKey, setSecretAccessKey] = useState('')
     const [sessionToken, setSessionToken] = useState('')
     const [success, setSuccess] = useState('')
+    const [err, setError] = useState('')
     const handleSubmit = async (e)=>{
         e.preventDefault()
         try{
@@ -19,24 +23,35 @@ const Setcli = () => {
             setSuccess(res.data)
             console.log(res.data);
             console.log(awsCLI);
+            navigate("/signin")
         }
         catch(err){
+           setError(err.message)
             console.log(err.message);
         }
         
     }
   return (
     <div>
+        <h1>Bạn phải có AWS CLI để có thể sử dụng các dịch vụ này</h1>
         <form action="" onSubmit={handleSubmit}>
-            <label htmlFor="">accessKeyId</label>
-            <input type="text" name="" id="" onChange={(e)=>setAccessKeyId(e.target.value)}/>
-            <label htmlFor="">secretAccessKey</label>
-            <input type="text" name="" id="" onChange={(e)=>setSecretAccessKey(e.target.value)}/>
-            <label htmlFor="">sessionToken</label>
-            <input type="text" name="" id="" onChange={(e)=>setSessionToken(e.target.value)}/>
-            <button type='submit'>Đăng nhập</button>
+            <div className='mb-3'>
+                <label htmlFor="" className='form-label'>Access Key Id</label>
+                <input type="text"  className="form-control" name="" id="" onChange={(e)=>setAccessKeyId(e.target.value)}/>
+            </div>
+            <div className='mb-3'>
+                <label htmlFor="" className='form-label'>Secret Access Key</label>
+                <input type="text" className="form-control" name="" id="" onChange={(e)=>setSecretAccessKey(e.target.value)}/>
+            </div>
+            <div className='mb-3'>
+                <label htmlFor="" className='form-label'>Session Token</label>
+                <input type="text" className="form-control" name="" id="" onChange={(e)=>setSessionToken(e.target.value)}/>
+            </div>
+            <button type='submit' className="btn btn-primary">Đăng nhập</button>
         </form>
         <p>{success}</p>
+
+        <p>{err}</p>
     </div>
   )
 }
