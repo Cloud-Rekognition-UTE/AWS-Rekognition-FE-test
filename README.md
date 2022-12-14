@@ -9,6 +9,10 @@
 <h4>Samples...</h4>
 <p>{PORT}: 3000</p>
 <p>{URL}: localhost:3000</p>
+<p>{URL}: localhost:3000/setCLI: trang nhập AWS CLI</p>
+<p>{URL}: localhost:3000/signin: trang đăng nhập vào home hoặc admin thông qua chụp ảnh, gởi ảnh lên S3 và so sánh ảnh</p>
+<p>{URL}: localhost:3000/home: trang home cho user không có chức vụ admin</p>
+<p>{URL}: localhost:3000/admin: trang home cho user có chức vụ admin</p>
 <p>scripts: npm start</p>
 <h4>API Routes...</h4>
 <table>
@@ -45,13 +49,18 @@
       <td>So sánh các gương mặt</td>
       <td>So sánh các gương mặt trong 2 bức hình được truyền vào</td>
     </tr>
+    <tr>
+      <td>6</td>
+      <td>Kiểm duyệt</td>
+      <td>Kiểm duyệt nội dung</td>
+    </tr>
   </tbody>
 </table>
 <h4>Steps...</h4>
 <p>Truy cập vào trang {URL} với {PORT}</p>
-<p>Chọn chức năng</p>
-<p>Chọn hình (có thể chọn 2 hình nếu chọn chức năng So sánh gương mặt)</p>
-<p>Nhấn nút Upload to S3 để hệ thống upload hình vừa chọn lên Amazon S3</p>
-<p>Nhấn nút chức năng (Phát hiện.../ So sánh...)</p>
+<p>Nhập AWS CLI</p>
+<p>Qua trang signin, chụp ảnh rồi upload lên S3. Sau khi up thành công thì đăng nhập</p>
+<p>Nếu là admin sẽ vào trang admin rồi có thể thêm user hoặc xóa user</p>
+<p>Nếu không là admin sẽ vào trang home sử dụng các tính năng của Rekognition</p>
 <h4>Credits...</h4>
-<p>2. Cách gắn API: https://console.aws.amazon.com/rekognition/home?region=us-east-1#/</p>
+<p>1. Cách gắn API: https://console.aws.amazon.com/rekognition/home?region=us-east-1#/</p>
